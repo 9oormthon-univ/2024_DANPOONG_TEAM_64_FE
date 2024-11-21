@@ -3,17 +3,25 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import TitleImage from "./assets/로그인/주식 한입.svg";
 import KakakoImage from "./assets/로그인/카카오톡.svg";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
+  console.log(navigation);
   return (
     <View style={styles.container}>
       <TitleImage width={200} height={125} />
       {/* 설명 */}
       <Text style={styles.subtitle}>카카오로 로그인/회원가입 하기</Text>
 
-      {/* 카카오톡 버튼 */}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          console.log("Button Pressed!"); // 버튼 클릭 확인
+          navigation.navigate("Home");
+        }}
+      >
         <KakakoImage width={50} height={50} />
+        <Text style={styles.buttonText}>카카오톡</Text>
       </TouchableOpacity>
+
       <Text style={styles.buttonText}>카카오톡</Text>
     </View>
   );
