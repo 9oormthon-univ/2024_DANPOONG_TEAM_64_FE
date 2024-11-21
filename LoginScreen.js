@@ -4,7 +4,6 @@ import TitleImage from "./assets/로그인/주식 한입.svg";
 import KakakoImage from "./assets/로그인/카카오톡.svg";
 
 export default function LoginScreen({ navigation }) {
-  console.log(navigation);
   return (
     <View style={styles.container}>
       <TitleImage width={200} height={125} />
@@ -14,12 +13,10 @@ export default function LoginScreen({ navigation }) {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          console.log("Button Pressed!"); // 버튼 클릭 확인
           navigation.navigate("Home");
         }}
       >
         <KakakoImage width={50} height={50} />
-        <Text style={styles.buttonText}>카카오톡</Text>
       </TouchableOpacity>
 
       <Text style={styles.buttonText}>카카오톡</Text>
