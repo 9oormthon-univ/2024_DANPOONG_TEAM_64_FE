@@ -21,6 +21,8 @@ const HomeScreen = () => {
     { id: "2", name: "엔비디아", price: "$228.02", logo: NvidiaLogo },
     { id: "3", name: "마이크로소프트", price: "$228.02", logo: MsLogo },
     { id: "4", name: "구글", price: "$228.02", logo: GoogleLogo },
+    { id: "5", name: "구글", price: "$228.02", logo: GoogleLogo },
+    { id: "6", name: "구글", price: "$228.02", logo: GoogleLogo },
   ];
 
   const handleStockSelect = (id) => {
@@ -36,12 +38,17 @@ const HomeScreen = () => {
       <MainLogo width={100} height={40} />
       <Text style={styles.greeting}>지니님,{"\n"}안녕하세요!</Text>
       <View style={styles.cardContainer}>
-        <View style={styles.card}>
-          <Text style={styles.cardText}>7 / 10</Text>
+        {/* 결과보기 카드 */}
+        <View style={styles.cardWrapper}>
+          <View style={styles.card}>
+            <Text style={styles.cardText}>7 / 10</Text>
+          </View>
           <Text style={styles.cardSubtext}>결과 보기</Text>
         </View>
-        <View style={styles.card}>
-          <Text style={styles.cardText}>{dayjs().format("HH:mm:ss")}</Text>
+        <View style={styles.cardWrapper}>
+          <View style={styles.card}>
+            <Text style={styles.cardText}>{dayjs().format("HH:mm:ss")}</Text>
+          </View>
           <Text style={styles.cardSubtext}>남은 시간 안에 맞춰보세요!</Text>
         </View>
       </View>
@@ -49,6 +56,7 @@ const HomeScreen = () => {
       <FlatList
         data={stocks}
         numColumns={2}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.stockButton}
@@ -66,19 +74,41 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
+    paddingTop: 60,
+  },
+  greeting: {
+    fontSize: 25,
+    marginBottom: 10,
+    marginTop: 35,
+  },
   cardContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     marginVertical: 20,
   },
+  cardWrapper: {
+    alignItems: "center",
+  },
   card: {
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#FFFFFF",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
-    flex: 1,
+    justifyContent: "center",
+    width: 140,
+    height: 100,
     margin: 5,
+    elevation: 3, // Android 그림자
+    shadowColor: "#000", // iOS 그림자
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
+
   cardText: {
     fontSize: 24,
     fontWeight: "bold",
@@ -87,42 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#888",
   },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 20,
-    paddingTop: 60,
-  },
-  button: {
-    backgroundColor: "#F0F0F0",
-    borderRadius: 10,
-    padding: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    elevation: 2, // Android 그림자
-    shadowColor: "#000", // iOS 그림자
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-  },
-  greeting: {
-    fontSize: 25,
-    marginBottom: 10,
-    marginTop: 35,
-  },
-  resultContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 20,
-  },
-  resultText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  timer: {
-    fontSize: 20,
-    color: "#FF3B30",
-  },
+
   subTitle: {
     fontSize: 18,
     fontWeight: "bold",
