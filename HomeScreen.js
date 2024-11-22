@@ -1,17 +1,17 @@
+import dayjs from "dayjs";
 import React, { useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
   FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import Countdown from "react-countdown";
-import MainLogo from "./assets/홈스크린/주식 한입 작은버전.svg";
 import GoogleLogo from "./assets/홈스크린/구글.svg";
 import AppleLogo from "./assets/홈스크린/애플.svg";
 import NvidiaLogo from "./assets/홈스크린/엔비디아.svg";
 import MsLogo from "./assets/홈스크린/윈도우.svg";
+import MainLogo from "./assets/홈스크린/주식 한입 작은버전.svg";
 
 const HomeScreen = () => {
   const [selectedStock, setSelectedStock] = useState(null);
@@ -23,22 +23,27 @@ const HomeScreen = () => {
     { id: "4", name: "구글", price: "$228.02", logo: GoogleLogo },
   ];
 
-  const renderer = ({ hours, minutes, seconds }) => (
-    <Text style={styles.timer}>{`${hours}:${minutes}:${seconds}`}</Text>
-  );
-
   const handleStockSelect = (id) => {
     setSelectedStock(id);
     alert(`You selected ${id}!`);
+  };
+  const handlePress = () => {
+    alert("결과 보기 클릭!");
   };
 
   return (
     <View style={styles.container}>
       <MainLogo width={100} height={40} />
       <Text style={styles.greeting}>지니님,{"\n"}안녕하세요!</Text>
-      <View style={styles.resultContainer}>
-        <Text style={styles.resultText}>7 / 10</Text>
-        <Countdown date={Date.now() + 6 * 60 * 60 * 1000} renderer={renderer} />
+      <View style={styles.cardContainer}>
+        <View style={styles.card}>
+          <Text style={styles.cardText}>7 / 10</Text>
+          <Text style={styles.cardSubtext}>결과 보기</Text>
+        </View>
+        <View style={styles.card}>
+          <Text style={styles.cardText}>{dayjs().format("HH:mm:ss")}</Text>
+          <Text style={styles.cardSubtext}>남은 시간 안에 맞춰보세요!</Text>
+        </View>
       </View>
       <Text style={styles.subTitle}>주식을 골라주세요!</Text>
       <FlatList
@@ -61,13 +66,45 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  cardContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: 20,
+  },
+  card: {
+    backgroundColor: "#f9f9f9",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    flex: 1,
+    margin: 5,
+  },
+  cardText: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  cardSubtext: {
+    fontSize: 12,
+    color: "#888",
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: 20,
     paddingTop: 60,
   },
-
+  button: {
+    backgroundColor: "#F0F0F0",
+    borderRadius: 10,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 2, // Android 그림자
+    shadowColor: "#000", // iOS 그림자
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
   greeting: {
     fontSize: 25,
     marginBottom: 10,
@@ -83,7 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   timer: {
-    fontSize: 18,
+    fontSize: 20,
     color: "#FF3B30",
   },
   subTitle: {
@@ -101,10 +138,7 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     borderRadius: 10,
   },
-  stockLogo: {
-    fontSize: 32,
-    marginBottom: 10,
-  },
+
   stockName: {
     fontSize: 18,
     fontWeight: "bold",
