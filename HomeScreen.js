@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import GoogleLogo from "./assets/홈스크린/구글.svg";
-import AppleLogo from "./assets/홈스크린/애플.svg";
-import NvidiaLogo from "./assets/홈스크린/엔비디아.svg";
-import MsLogo from "./assets/홈스크린/윈도우.svg";
+import GoogleLogo from "./assets/Logo=Google.svg";
+import AppleLogo from "./assets/Logo=Apple.svg";
+import NvidiaLogo from "./assets/Logo=Nvidia.svg";
+import MsLogo from "./assets/Logo=Microsoft.svg";
+import AmazonLogo from "./assets/Logo=Amazon.svg";
+import MetaLogo from "./assets/Logo=Meta.svg";
 import MainLogo from "./assets/홈스크린/주식 한입 작은버전.svg";
 
 const HomeScreen = () => {
@@ -21,8 +23,8 @@ const HomeScreen = () => {
     { id: "2", name: "엔비디아", price: "$228.02", logo: NvidiaLogo },
     { id: "3", name: "마이크로소프트", price: "$228.02", logo: MsLogo },
     { id: "4", name: "구글", price: "$228.02", logo: GoogleLogo },
-    { id: "5", name: "구글", price: "$228.02", logo: GoogleLogo },
-    { id: "6", name: "구글", price: "$228.02", logo: GoogleLogo },
+    { id: "5", name: "아마존", price: "$228.02", logo: AmazonLogo },
+    { id: "6", name: "메타", price: "$228.02", logo: MetaLogo },
   ];
 
   const handleStockSelect = (id) => {
