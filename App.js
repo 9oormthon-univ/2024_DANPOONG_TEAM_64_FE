@@ -3,7 +3,7 @@ import React from "react";
 import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
 import ResultScreen from "./ResultScreen";
-import ResultScreen from "./ResultScreen";
+
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
