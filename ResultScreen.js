@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#ffffff",
   },
-
   titleText: {
     marginTop: 60,
     fontSize: 20,
