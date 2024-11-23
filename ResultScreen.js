@@ -1,5 +1,7 @@
 import React from "react";
+
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+
 import AppleOn from "./assets/Stamp/appleOn.svg";
 import GoogleOn from "./assets/Stamp/googleOn.svg";
 import NvidiaOn from "./assets/Stamp/nvidiaOn.svg";
@@ -23,6 +25,7 @@ const ResultScreen = () => {
     "appleOff",
     "amazonOff",
     "null",
+
     "nvidiaOff",
     "metaOn",
     "appleOff",
@@ -36,6 +39,7 @@ const ResultScreen = () => {
     datas.slice(0, 3), // 첫 번째 행
     datas.slice(3, 7), // 두 번째 행
     datas.slice(7, 10), // 세 번째 행
+
   ];
 
   // 상태와 SVG를 매핑
@@ -55,13 +59,16 @@ const ResultScreen = () => {
     null: Nullsvg,
   };
 
+
   return (
     <View style={styles.container}>
+
       {/* 결과 텍스트 */}
       <Text style={styles.titleText}>지니 님은</Text>
       <Text style={styles.highlightText}>
         총 <Text style={styles.highlightNumber}>7번</Text> 맞히셨네요!
       </Text>
+
 
       {/* 로고 그리드 */}
       <View style={styles.logoContainer}>
@@ -90,6 +97,7 @@ const ResultScreen = () => {
             })}
           </View>
         ))}
+
       </View>
     </View>
   );
@@ -101,6 +109,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#ffffff",
   },
+
   titleText: {
     marginTop: 60,
     fontSize: 20,
@@ -116,22 +125,26 @@ const styles = StyleSheet.create({
     color: "blue",
     fontWeight: "bold",
   },
+
   logoContainer: {
     marginTop: 30,
     padding: 10,
     backgroundColor: "#f9f9f9",
     borderRadius: 10,
     shadowColor: "#000",
+
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
   },
+
   row: {
     flexDirection: "row",
     justifyContent: "center",
     marginBottom: 15,
   },
   logoWrapper: {},
+
 });
 
 export default ResultScreen;
